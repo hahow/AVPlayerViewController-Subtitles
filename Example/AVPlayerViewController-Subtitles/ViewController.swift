@@ -63,7 +63,7 @@ class ViewController: UIViewController {
         let subtitleURL = URL(fileURLWithPath: subtitleFile!)
         
         // Subtitle parser
-        let parser = Subtitles(file: subtitleURL, encoding: .utf8)
+        let parser = try! Subtitles(file: subtitleURL, encoding: .utf8)
         
         // Do something with result
         _ = parser.searchSubtitles(at: 2.0) // Search subtitle at 2.0 seconds

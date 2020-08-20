@@ -25,10 +25,10 @@ private struct AssociatedKeys {
     fileprivate var parsedPayload: NSDictionary?
     
     // MARK: - Public methods
-    public init(file filePath: URL, encoding: String.Encoding = String.Encoding.utf8) {
+    public init(file filePath: URL, encoding: String.Encoding = String.Encoding.utf8) throws {
         
         // Get string
-        let string = try! String(contentsOf: filePath, encoding: encoding)
+        let string = try String(contentsOf: filePath, encoding: encoding)
         
         // Parse string
         parsedPayload = Subtitles.parseSubRip(string)
@@ -198,9 +198,9 @@ public extension AVPlayerViewController {
         
     }
     
-    func open(fileFromLocal filePath: URL, encoding: String.Encoding = String.Encoding.utf8) {
+    func open(fileFromLocal filePath: URL, encoding: String.Encoding = String.Encoding.utf8) throws {
         
-        let contents = try! String(contentsOf: filePath, encoding: encoding)
+        let contents = try String(contentsOf: filePath, encoding: encoding)
         show(subtitles: contents)
     }
     
